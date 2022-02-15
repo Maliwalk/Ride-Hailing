@@ -53,7 +53,7 @@ public class RideHailingMain {
                 .capcity(4)
                 .latitute(10D)
                 .longitude(10D)
-                .vehicleType(VehicleType.SEDAN)
+                .vehicleType(VehicleType.NORMAL)
                 .build();
 //        vehicle.setVehicleNumber("GJ1234");
 //        vehicle.setCapcity(4);
@@ -129,6 +129,8 @@ public class RideHailingMain {
 
 
 
+
+
         rideHailing.startRide(1L);
         rideHailing.startRide(2L);
 
@@ -146,6 +148,23 @@ public class RideHailingMain {
 
         rideHailing.updateVehicleLocation("GJ123",3D,3D);
         System.out.println();
+
+
+        Booking booking2 = new Booking();
+        booking2.setRiderId(9879106337L);
+        booking2.setStartLat(1D);
+        booking2.setStartLong(1D);
+        booking2.setEndLat(20D);
+        booking2.setEndLong(19D);
+        booking2.setPreferredVehicle(VehicleType.SEDAN);
+        try{
+            BookingResponse bookingResponse = rideHailing.bookRide(booking2);
+            System.out.println(bookingResponse);
+        }catch(Exception e){
+            System.out.println("Some error occurred "+ e.getMessage());
+        }
+
+
         List<Booking> userBooking;
         Long userId;
         userId=9879106332L;
